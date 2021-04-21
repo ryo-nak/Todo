@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<figure class="text-center">
+  <blockquote class="blockquote">
+    <h1>Todo list</h1>
+  </blockquote>
+  <figcaption class="blockquote-footer">
+    <p>Todolistを使って生産的な毎日を</p>
+  </figcaption>
+</figure>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<a href="{% url 'create'  %}" class="btn btn-dark mb-3" tabindex="-1" role="button" aria-disabled="true">Create New</a>
+  {% for item in object_list %}
+
+    <div class="alert alert-success" role="alert">
+      <p>{{ item.title }}</p>
+
+        <a href="{% url 'update' item.pk %}" class="btn btn-primary" tabindex="-1" role="button" aria-disabled="true">Edit</a>
+        <a href="{% url 'delete' item.pk %}" class="btn btn-danger" tabindex="-1" role="button" aria-disabled="true">Delete</a>
+        <a href="{% url 'detail' item.pk %}" class="btn btn-secondary" tabindex="-1" role="button" aria-disabled="true">Detail</a>
+
+    </div>
+
+
+
+  {% endfor %}
+</div>
+{% endblock content %}
